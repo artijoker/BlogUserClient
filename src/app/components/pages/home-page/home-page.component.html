@@ -1,0 +1,25 @@
+<div class="container">
+    <div *ngIf="posts.length === 0" class="p-5 d-flex justify-content-center">
+        <div class="spinner-border"></div>
+    </div>
+    <div *ngIf="posts.length > 0">
+        <h2 class="h2 mb-5 d-flex">Последние публикации:</h2>
+        <div class="row mb-2">
+            <div class="col-md-6 " *ngFor="let post of posts">
+                <div class=" row text-bg-dark  g-0 border rounded overflow-hidden flex-md-row mb-4 h-md-250">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong (click)="goToPostsByCategory(post.categoryId)"
+                                role="button"
+                                class="d-inline-block mb-2 text-primary">
+                            {{post.categoryName}}
+                        </strong>
+                        <h4 class="text-ellipsis  fst-italic">{{post.title}}</h4>
+                        <div class="mb-1 text-muted">{{post.lastChange | date}}</div>
+                        <p class="text-ellipsis card-text mb-auto">{{post.anons}}</p>
+                        <a role="button" (click)="goToPost(post.id)" class="link-primary">Читать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
